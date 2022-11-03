@@ -6,7 +6,7 @@ const StyledView = styled.View`
 `;
 
 const StyledText = styled.Text`
-  color: palevioletred;
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 export default () => {
