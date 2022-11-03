@@ -2,6 +2,11 @@ name: Lint
 
 on: [pull_request]
 
+# Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+permissions:
+  checks: write
+  contents: write
+
 jobs:
   run-linters:
     name: Run linters
@@ -15,12 +20,8 @@ jobs:
         with:
           node-version: 12
 
-      # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
-        run: npm ci
+        run: yarn
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
+        run: yarn lint
