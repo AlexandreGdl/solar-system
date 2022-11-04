@@ -1,17 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components';
 import React, { StyleSheet, Text, View } from 'react-native';
+import { Provider as ReduxProvider } from 'react-redux';
 import Test from './src';
 import theme from './src/theme';
+import { store } from './src/store';
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Test />
-        <StatusBar style="auto" />
-      </View>
+      <ReduxProvider store={store}>
+        <View style={styles.container}>
+          <Test />
+          <StatusBar style="auto" />
+        </View>
+      </ReduxProvider>
     </ThemeProvider>
   );
 }
