@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react-native';
 import styled from 'styled-components/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Title, Template } from '../components';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
@@ -27,8 +28,8 @@ export default (props: Props) => {
       source={require('../../assets/earth-space.png')}
     >
       <StatusBar style="light" />
-      <AreaView>
-        <Title>Solar System</Title>
+      <Template>
+        <CustomTitle>Solar System</CustomTitle>
         <Description>
           Solar System is a Mobile App built with React-Native. It Display data
           about the planet that populate our solar system.
@@ -36,26 +37,20 @@ export default (props: Props) => {
         <Button onPress={handleNavigation} activeOpacity={0.7}>
           <ButtonText>Discover</ButtonText>
         </Button>
-      </AreaView>
+      </Template>
     </Background>
   );
 };
+
+// Non-reused component / restyled component
 
 const Background = styled.ImageBackground`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
 `;
 
-const AreaView = styled.SafeAreaView`
-  flex: 1;
-  margin-left: 20px;
-  margin-right: 20px;
-`;
-
-const Title = styled.Text`
-  font-size: 30pt;
-  font-weight: bold;
-  color: ${(props) => props.theme.colors.text.primary};
+// With this we are able to override existing style
+const CustomTitle = styled(Title)`
   margin-top: 40px;
 `;
 
