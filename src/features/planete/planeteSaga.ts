@@ -3,19 +3,21 @@ import { getPlanetes } from '../../api/planetes';
 import { planetesAction } from './planeteAction';
 import { updatePlanete, updateLoading } from './planeteSclice';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+// Worker Sage : Fetch all the planetes through API
 function* fetchPlanetes() {
+  yield put(updateLoading(true));
   try {
-    yield put(updateLoading(true));
     const b: ApiResponse<Planet[]> = yield getPlanetes();
     yield put(updatePlanete(b.bodies));
-    yield put(updateLoading(false));
   } catch (e: any) {
-    console.log(e);
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    // yield put(fetchFailed());
+    // Should handle error
+  } finally {
+    yield put(updateLoading(false));
   }
 }
 
+// Handle All the request made
 function* planeteSaga() {
   yield takeEvery(planetesAction.PLANETES_FETCH_REQUESTED, fetchPlanetes);
 }

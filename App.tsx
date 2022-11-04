@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components';
-import React, { StyleSheet, Text, View } from 'react-native';
+import React, { StyleSheet, View } from 'react-native';
 import { Provider as ReduxProvider } from 'react-redux';
 import Test from './src';
 import theme from './src/theme';

@@ -54,11 +54,9 @@ class ApiService {
   public request<T>(
     method: HttpMethod,
     endpoint: string,
-    customOptions: ApiRequestOptions = {}
+    options: ApiRequestOptions = {}
   ): Promise<T> {
     const url = `https://api.le-systeme-solaire.net/rest/${endpoint}`;
-
-    const options = customOptions;
 
     return new Promise((resolve, reject) => {
       fetch(url, {
@@ -71,19 +69,17 @@ class ApiService {
         ...(!!options.body && { body: JSON.stringify(options.body) }),
       })
         .then(async (response: Response) => {
-          if (response.ok) {
-            return response;
-          }
           const resJson = await response.json();
           // response.ok is true if the http code is in the range 200 - 299
           if (!response.ok) {
             reject(resJson);
+            return;
           }
           return resJson;
         })
         // Success return json of body
         .then((value) => {
-          resolve(value.json() as T);
+          resolve(value as T);
         })
         // Catch error
         .catch(reject);
