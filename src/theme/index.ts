@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components';
 
 const colors = {
   primary: 'blue',
+  background: '#333333',
   text: {
     primary: '#fff',
     contrast: '#000',
