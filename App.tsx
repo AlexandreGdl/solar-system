@@ -1,29 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components';
-import React, { StyleSheet, Text, View } from 'react-native';
 import { Provider as ReduxProvider } from 'react-redux';
-import Test from './src';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import theme from './src/theme';
 import { store } from './src/store';
+import { DiscoverPage, HomePage, PlanetPage } from './src/pages';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <ReduxProvider store={store}>
-        <View style={styles.container}>
-          <Test />
-          <StatusBar style="auto" />
-        </View>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Discover">
+            <Stack.Screen
+              name="Discover"
+              options={{ headerShown: false }}
+              component={DiscoverPage}
+            />
+            <Stack.Screen
+              name="Home"
+              options={{ headerShown: false }}
+              component={HomePage}
+            />
+            <Stack.Screen
+              name="Planet"
+              options={{ headerShown: false }}
+              component={PlanetPage}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
       </ReduxProvider>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

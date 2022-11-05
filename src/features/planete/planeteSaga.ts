@@ -1,23 +1,25 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { getPlanetes } from '../../api/planetes';
 import { planetesAction } from './planeteAction';
-import { updatePlanete, updateLoading } from './planeteSclice';
+import { updatePlanete, updatePending } from './planeteSclice';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+// Worker Sage : Fetch all the planetes through API
 function* fetchPlanetes() {
+  yield put(updatePending(true));
   try {
-    yield put(updateLoading(true));
     const b: ApiResponse<Planet[]> = yield getPlanetes();
     yield put(updatePlanete(b.bodies));
-    yield put(updateLoading(false));
   } catch (e: any) {
-    console.log(e);
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    // Should handle error on no fetch
+    // Ex: yield put(fetchFailed());
+  } finally {
+    yield put(updatePending(false));
   }
 }
 
+// Handle All the request made to fetch planetes
 function* planeteSaga() {
-  yield takeEvery(planetesAction.PLANETES_FETCH_REQUESTED, fetchPlanetes);
+  yield takeLatest(planetesAction.PLANETES_FETCH_REQUESTED, fetchPlanetes);
 }
 
 export default planeteSaga;

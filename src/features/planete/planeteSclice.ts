@@ -3,28 +3,33 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface CounterState {
   planetes: Planet[];
-  loading: boolean;
+  // Should reconsider doing this.
+  // If multiple element use this pending property we can have UI Issue.
+  pending: boolean;
 }
 
 const initialState: CounterState = {
   planetes: [],
-  loading: false,
+  pending: false,
 };
 
+// Planete Slice
 export const planeteSlice = createSlice({
   name: 'planete',
   initialState,
   reducers: {
+    // Update the planete field in the store
     updatePlanete: (state, action: PayloadAction<Planet[]>) => {
       state.planetes = action.payload;
     },
-    updateLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
+    // Update the pending field in the store
+    updatePending: (state, action: PayloadAction<boolean>) => {
+      state.pending = action.payload;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { updatePlanete, updateLoading } = planeteSlice.actions;
+// Export all actions for the reducer
+export const { updatePlanete, updatePending } = planeteSlice.actions;
 
 export default planeteSlice.reducer;

@@ -3,6 +3,11 @@ Solar System is a React-Native App displaying data about our solar-system create
 
 I am using Expo here because I do not intend in doing native code & I have a short amount of time to do this application, so in my opinion Expo is very suitable for this case. To be more precise I started a TypeScript Blank Project using the Expo CLI.
 
+Project require a .env file
+
+## Env
+- API_URL=https://api.le-systeme-solaire.net/rest (Current API we are using)
+
 ## Run
 Dev
 ```
@@ -45,6 +50,10 @@ This project use ESLint to provide homogenous code through the whole project, no
 
 ## Context
 Technical Test for `Big Boss Studio`
+
+## Known issue
+- Refresh controller not displaying on first fetch
+- The planet fetched if not present in store is not added in the store
 
 ## Author
 Alexandre GUINDEUIL 📍 Barcelone

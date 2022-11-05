@@ -1,0 +1,3 @@
+type GapProps = {
+  gap?: string;
+};
