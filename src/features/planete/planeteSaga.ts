@@ -10,8 +10,7 @@ function* fetchPlanetes() {
     const b: ApiResponse<Planet[]> = yield getPlanetes();
     yield put(updatePlanete(b.bodies));
   } catch (e: any) {
-    // Should handle error on no fetch
-    // Ex: yield put(fetchFailed());
+    // TODO: Implement Sentry to catch error like those
   } finally {
     yield put(updatePending(false));
   }
