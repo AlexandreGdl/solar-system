@@ -14,7 +14,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <ReduxProvider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home">
+          <Stack.Navigator initialRouteName="Discover">
             <Stack.Screen
               name="Discover"
               options={{ headerShown: false }}

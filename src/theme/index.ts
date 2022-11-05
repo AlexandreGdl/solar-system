@@ -12,6 +12,7 @@ const colors = {
 
 const theme: DefaultTheme = {
   colors,
+  radius: '8px',
   name: 'Development',
 };
 

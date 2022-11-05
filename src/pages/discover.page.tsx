@@ -67,7 +67,7 @@ const Button = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   padding: 15px 25px;
-  border-radius: 8px;
+  border-radius: ${(props) => props.theme.radius};
   align-self: start;
 `;
 

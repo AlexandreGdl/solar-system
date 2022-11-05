@@ -4,4 +4,5 @@ type Planet = {
   name: string;
   isPlanet: boolean;
   moons: Moon[];
+  meanRadius: number;
 };
