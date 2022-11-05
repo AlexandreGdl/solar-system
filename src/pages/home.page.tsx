@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ListRenderItemInfo, RefreshControl } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import { Section, Template, Title } from '../components';
+import { EmptyList, Section, Template, Title } from '../components';
 import { RootState } from '../store';
 import { planetesAction } from '../features/planete/planeteAction';
 
@@ -22,14 +22,27 @@ export default () => {
     fetchPlanetes();
   }, [fetchPlanetes]);
 
+  /**
+   * Return a Section componenent for each planet in store
+   * @param {ListRenderItemInfo<Planet>} param0 item
+   * @returns {JSX.Element} Section
+   */
   const renderItem = ({ item, index }: ListRenderItemInfo<Planet>) => (
     <Section key={index} planet={item} />
   );
 
+  /**
+   * Return a text based on the current situation, depending on search & fetched planetes
+   * @returns {string} text to display
+   */
+  const getEmptyText = () =>
+    search.trim().length > 0 && planetes.length > 0
+      ? 'No planet match your search'
+      : 'Could not retreive planet from API, scroll to re-fresh';
+
   return (
     <Container>
       <Template>
-        {/* {pending ? <Loader color={theme.colors.text.primary} /> : <></>} */}
         <CustomTitle>Solar System</CustomTitle>
         <CustomInput
           onChangeText={setSearch}
@@ -37,6 +50,7 @@ export default () => {
           placeholder="Enter the name of a planet"
         />
         <CustomList
+          ListEmptyComponent={<EmptyList text={getEmptyText()} />}
           refreshControl={
             <RefreshControl
               refreshing={pending}

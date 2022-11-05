@@ -1,0 +1,3 @@
+type EmptyListProps = {
+  text: string;
+};
