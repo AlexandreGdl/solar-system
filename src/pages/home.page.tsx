@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components/native';
-import { PlanetsList, Template, Title } from '../components';
+import { Header, PlanetsList, Template } from '../components';
 import { RootState } from '../store';
 import { planetesAction } from '../features/planete/planeteAction';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -14,7 +14,7 @@ type Props = {
  * Home Page
  * Purpose : Display the list of the planet
  */
-export default (props: Props) => {
+export default ({ navigation }: Props) => {
   const theme = useContext(ThemeContext);
   const { planetes, pending } = useSelector(
     (state: RootState) => state.planetes
@@ -41,15 +41,15 @@ export default (props: Props) => {
 
   const goToPlanet = useCallback(
     (id: string) => {
-      props.navigation.navigate('Planet', { id });
+      navigation.navigate('Planet', { id });
     },
-    [props.navigation]
+    [navigation]
   );
 
   return (
     <Container>
       <Template>
-        <CustomTitle>Solar System</CustomTitle>
+        <Header navigation={navigation} title="Solar System" />
         <CustomInput
           onChangeText={setSearch}
           placeholderTextColor={theme.colors.text.primary}
@@ -76,10 +76,6 @@ const Container = styled.View`
 
 const CustomList = styled(PlanetsList)`
   margin-top: 20px;
-`;
-
-const CustomTitle = styled(Title)`
-  margin-top: 40px;
 `;
 
 const CustomInput = styled.TextInput`

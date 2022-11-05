@@ -1,11 +1,13 @@
+import { StyleProp, ViewStyle } from 'react-native';
 import styled from 'styled-components/native';
 
 type Props = {
-  children: JSX.Element[] | JSX.Element | string;
+  children: JSX.Element[] | JSX.Element | string | undefined;
+  style?: StyleProp<ViewStyle>;
 };
 
-export default ({ children }: Props) => {
-  return <AreaView>{children}</AreaView>;
+export default ({ children, style }: Props) => {
+  return <AreaView style={style}>{children}</AreaView>;
 };
 
 const AreaView = styled.SafeAreaView`

@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import styled from 'styled-components/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Title, Template } from '../components';
+import { Template, Header } from '../components';
 
 type Props = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Discover'>;
 };
 
 /**
@@ -13,12 +13,12 @@ type Props = {
  *
  * Improvement Idea: Add Animation on Discover press like swap or fade with rn-reanimated
  */
-export default (props: Props) => {
+export default ({ navigation }: Props) => {
   /**
    * Redirect User to planetes list with replacement for no go back
    */
   function handleNavigation(): void {
-    props.navigation.replace('Home');
+    navigation.replace('Home');
   }
 
   return (
@@ -28,7 +28,7 @@ export default (props: Props) => {
     >
       <StatusBar style="light" />
       <Template>
-        <CustomTitle>Solar System</CustomTitle>
+        <Header navigation={navigation} title="Solar System" />
         <Description>
           Solar System is a Mobile App built with React-Native. It Display data
           about the planet that populate our solar system.
@@ -46,11 +46,6 @@ export default (props: Props) => {
 const Background = styled.ImageBackground`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
-`;
-
-// With this we are able to override existing style
-const CustomTitle = styled(Title)`
-  margin-top: 40px;
 `;
 
 const Description = styled.Text`

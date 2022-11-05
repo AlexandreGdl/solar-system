@@ -46,5 +46,9 @@ This project use ESLint to provide homogenous code through the whole project, no
 ## Context
 Technical Test for `Big Boss Studio`
 
+## Known issue
+- Refresh controller not displaying on first fetch
+- The planet fetched if not present in store is not added in the store
+
 ## Author
 Alexandre GUINDEUIL 📍 Barcelone

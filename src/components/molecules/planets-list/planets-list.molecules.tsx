@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
-import { EmptyList, Section } from '../..';
+import Section from '../../atoms/section/section.atoms';
+import EmptyList from '../../atoms/empty-list/empty-list.atoms';
 
 /**
  * Planets List
@@ -27,13 +28,14 @@ export default ({
 
   return (
     <FlatList
-      ListEmptyComponent={<EmptyList text={emptyText} />}
+      showsVerticalScrollIndicator={false}
+      ListEmptyComponent={pending ? <EmptyList text={emptyText} /> : undefined}
       refreshControl={
         <RefreshControl
           refreshing={pending}
           onRefresh={onRefresh}
           tintColor={theme.colors.text.primary}
-          titleColor={theme.colors.text.primary}
+          colors={[theme.colors.text.primary]}
         />
       }
       numColumns={2}

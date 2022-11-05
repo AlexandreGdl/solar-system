@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { getPlanetes } from '../../api/planetes';
 import { planetesAction } from './planeteAction';
 import { updatePlanete, updatePending } from './planeteSclice';
@@ -19,7 +19,7 @@ function* fetchPlanetes() {
 
 // Handle All the request made to fetch planetes
 function* planeteSaga() {
-  yield takeEvery(planetesAction.PLANETES_FETCH_REQUESTED, fetchPlanetes);
+  yield takeLatest(planetesAction.PLANETES_FETCH_REQUESTED, fetchPlanetes);
 }
 
 export default planeteSaga;
