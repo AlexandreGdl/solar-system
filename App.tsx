@@ -1,11 +1,10 @@
 import { ThemeProvider } from 'styled-components';
-import React from 'react-native';
 import { Provider as ReduxProvider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import theme from './src/theme';
 import { store } from './src/store';
-import { DiscoverPage, HomePage } from './src/pages';
+import { DiscoverPage, HomePage, PlanetPage } from './src/pages';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,6 +23,11 @@ export default function App() {
               name="Home"
               options={{ headerShown: false }}
               component={HomePage}
+            />
+            <Stack.Screen
+              name="Planet"
+              options={{ headerShown: false }}
+              component={PlanetPage}
             />
           </Stack.Navigator>
         </NavigationContainer>

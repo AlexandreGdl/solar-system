@@ -16,3 +16,7 @@ export const getPlanetesByName = (
       'get',
       `bodies?filter[]=isPlanet,eq,true&filter[]=name,cs,${search}`
     );
+
+// Get planete by Id
+export const getPlaneteById = (id: string): Promise<Planet> =>
+  apiClient.getInstance().request<Planet>('get', `bodies/${id}`);

@@ -1,12 +1,20 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ListRenderItemInfo, RefreshControl } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import { EmptyList, Section, Template, Title } from '../components';
+import { PlanetsList, Template, Title } from '../components';
 import { RootState } from '../store';
 import { planetesAction } from '../features/planete/planeteAction';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-export default () => {
+type Props = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
+};
+
+/**
+ * Home Page
+ * Purpose : Display the list of the planet
+ */
+export default (props: Props) => {
   const theme = useContext(ThemeContext);
   const { planetes, pending } = useSelector(
     (state: RootState) => state.planetes
@@ -23,15 +31,6 @@ export default () => {
   }, [fetchPlanetes]);
 
   /**
-   * Return a Section componenent for each planet in store
-   * @param {ListRenderItemInfo<Planet>} param0 item
-   * @returns {JSX.Element} Section
-   */
-  const renderItem = ({ item, index }: ListRenderItemInfo<Planet>) => (
-    <Section key={index} planet={item} />
-  );
-
-  /**
    * Return a text based on the current situation, depending on search & fetched planetes
    * @returns {string} text to display
    */
@@ -39,6 +38,13 @@ export default () => {
     search.trim().length > 0 && planetes.length > 0
       ? 'No planet match your search'
       : 'Could not retreive planet from API, scroll to re-fresh';
+
+  const goToPlanet = useCallback(
+    (id: string) => {
+      props.navigation.navigate('Planet', { id });
+    },
+    [props.navigation]
+  );
 
   return (
     <Container>
@@ -50,21 +56,13 @@ export default () => {
           placeholder="Enter the name of a planet"
         />
         <CustomList
-          ListEmptyComponent={<EmptyList text={getEmptyText()} />}
-          refreshControl={
-            <RefreshControl
-              refreshing={pending}
-              onRefresh={fetchPlanetes}
-              tintColor={theme.colors.text.primary}
-              titleColor={theme.colors.text.primary}
-            />
-          }
-          numColumns={2}
           data={planetes.filter((v) =>
             v.name.toLowerCase().includes(search.toLowerCase())
           )}
-          // TODO: FIX TYPE ISSUE (Using styled transform auto typing to unknown)
-          renderItem={(e) => renderItem(e as ListRenderItemInfo<Planet>)}
+          pending={pending}
+          onRefresh={fetchPlanetes}
+          emptyText={getEmptyText()}
+          onItemPressed={goToPlanet}
         />
       </Template>
     </Container>
@@ -76,7 +74,7 @@ const Container = styled.View`
   background-color: ${(props) => props.theme.colors.background};
 `;
 
-const CustomList = styled.FlatList`
+const CustomList = styled(PlanetsList)`
   margin-top: 20px;
 `;
 

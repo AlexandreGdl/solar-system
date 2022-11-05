@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react-native';
 import styled from 'styled-components/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Title, Template } from '../components';
@@ -9,7 +8,7 @@ type Props = {
 };
 
 /**
- * Home Page function component
+ * Discover/Introduction Page function component
  * Purpose : Describe the application
  *
  * Improvement Idea: Add Animation on Discover press like swap or fade with rn-reanimated

@@ -1,9 +1,17 @@
-import React from 'react';
 import styled from 'styled-components/native';
 
-export default ({ planet }: SectionProps) => {
+export default ({ planet, onPress }: SectionProps) => {
+  /**
+   * Handle when section item is pressed
+   */
+  const handlePressed = () => {
+    if (onPress) {
+      onPress(planet.id);
+    }
+  };
+
   return (
-    <Container activeOpacity={0.8}>
+    <Container onPress={handlePressed} activeOpacity={0.8}>
       <CustomText>{planet.name}</CustomText>
     </Container>
   );

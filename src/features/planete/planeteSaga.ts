@@ -10,14 +10,14 @@ function* fetchPlanetes() {
     const b: ApiResponse<Planet[]> = yield getPlanetes();
     yield put(updatePlanete(b.bodies));
   } catch (e: any) {
-    // yield put(fetchFailed());
-    // Should handle error
+    // Should handle error on no fetch
+    // Ex: yield put(fetchFailed());
   } finally {
     yield put(updatePending(false));
   }
 }
 
-// Handle All the request made
+// Handle All the request made to fetch planetes
 function* planeteSaga() {
   yield takeEvery(planetesAction.PLANETES_FETCH_REQUESTED, fetchPlanetes);
 }
