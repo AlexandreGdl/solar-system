@@ -56,7 +56,7 @@ class ApiService {
     endpoint: string,
     options: ApiRequestOptions = {}
   ): Promise<T> {
-    const url = `https://api.le-systeme-solaire.net/rest/${endpoint}`;
+    const url = `${process.env.API_URL}/${endpoint}`;
 
     return new Promise((resolve, reject) => {
       fetch(url, {

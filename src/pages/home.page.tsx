@@ -57,7 +57,7 @@ export default ({ navigation }: Props) => {
         />
         <CustomList
           data={planetes.filter((v) =>
-            v.name.toLowerCase().includes(search.toLowerCase())
+            v.name.toLowerCase().includes(search.trim().toLowerCase())
           )}
           pending={pending}
           onRefresh={fetchPlanetes}
