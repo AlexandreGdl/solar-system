@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   run-jest:
-    name: Run linters
+    name: Run Jest
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
