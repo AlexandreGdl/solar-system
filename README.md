@@ -41,6 +41,8 @@ cf: https://bradfrost.com/blog/post/atomic-web-design/
 Jest
 ```
 In order to test this application I will use Jest and run GitHub Action at every PR done on the project (Simulating I am working with other people)
+
+I added Jest at the end because I had no Idea what to really test since I am not a big fan of the snapshot test. But I did find out what to test and how to do that. Also I tested one component as Exemple, not every component but test are setup and just wanting for other file to test.
 ```
 
 ESLint
@@ -56,4 +58,4 @@ Technical Test for `Big Boss Studio`
 - The planet fetched if not present in store is not added to the store, don't know if that should be the case or not
 
 ## Author
-Alexandre GUINDEUIL 📍 Barcelone
+Alexandre GUINDEUIL 📍 Angers
