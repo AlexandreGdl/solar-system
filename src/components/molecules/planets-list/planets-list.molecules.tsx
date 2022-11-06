@@ -40,7 +40,7 @@ export default ({
       }
       numColumns={2}
       data={data}
-      // TODO: FIX TYPE ISSUE (Using styled transform auto typing to unknown)
+      // Improvement: FIX TYPE ISSUE (Using styled transform auto typing to unknown)
       renderItem={(e) => renderItem(e as ListRenderItemInfo<Planet>)}
     />
   );

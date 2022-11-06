@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import Title from '../../atoms/title/title.atoms';
 
@@ -19,8 +20,10 @@ export default ({ title, goBack, navigation }: HeaderProps) => {
   );
 };
 
+// Avoiding Android Bad UI cause of no notch top
+// Improvement : Add helper function to auto-detect notch
 const Container = styled.View`
-  height: 70px;
+  height: ${Platform.OS === 'android' ? '100' : '70'}px;
   justify-content: flex-end;
 `;
 

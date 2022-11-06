@@ -5,7 +5,7 @@ export default ({ children, style }: TitleProps) => {
 };
 
 const Title = styled.Text`
-  font-size: 30pt;
+  font-size: 30px;
   font-weight: bold;
   color: ${(props) => props.theme.colors.text.primary};
 `;

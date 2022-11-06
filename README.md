@@ -26,7 +26,7 @@ $ yarn test
 - Styled-Components (cf: https://styled.components.com)
 - Redux-Sage (cf: https://redux.saga.com)
 - Expo (cf: https://expo.io)
-- React-Native Navigation (cf: https://link.to.rn.navigation)
+- React-Native Navigation (cf: https://reactnavigation.org/)
 
 ## Development Approach
 I used atomic design to structure my components, separating theme into 3 categories :
@@ -35,7 +35,7 @@ I used atomic design to structure my components, separating theme into 3 categor
 
 Doing so it feel easier to integrate, the code is more maintainable & it also help with testing.
 
-cf: https://link.to.atomic.design
+cf: https://bradfrost.com/blog/post/atomic-web-design/
 
 ## Testing
 Jest
@@ -52,8 +52,8 @@ This project use ESLint to provide homogenous code through the whole project, no
 Technical Test for `Big Boss Studio`
 
 ## Known issue
-- Refresh controller not displaying on first fetch
-- The planet fetched if not present in store is not added in the store
+- Refresh controller not displaying on first fetch on iOS
+- The planet fetched if not present in store is not added to the store, don't know if that should be the case or not
 
 ## Author
 Alexandre GUINDEUIL 📍 Barcelone

@@ -16,5 +16,4 @@ export default ({ label, value }: InformationProps) => {
 
 const CustomText = styled.Text`
   color: ${(props) => props.theme.colors.text.primary};
-  text-align-center;
 `;
