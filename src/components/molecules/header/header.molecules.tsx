@@ -1,15 +1,22 @@
+import { useNavigation } from '@react-navigation/native';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import Title from '../../atoms/title/title.atoms';
 
-export default ({ title, goBack, navigation }: HeaderProps) => {
+/**
+ * Header
+ * Purpose : Add title & return button
+ */
+export default ({ title, goBack }: HeaderProps) => {
+  // Hate to do that for testing purpose
+  const navigation = useNavigation();
   /**
    * Handle Going back
    */
   const handleGoBack = () => navigation.goBack();
 
   return (
-    <Container>
+    <Container testID="header">
       {goBack && (
         <Button onPress={handleGoBack}>
           <CustomText>Return</CustomText>
