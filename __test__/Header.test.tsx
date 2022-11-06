@@ -25,6 +25,9 @@ beforeEach(() => {
   useNavigationMock.mockReset();
 });
 
+/**
+ * Testing basic Rendering by component
+ */
 it('renders correctly header with go back button & title', () => {
   CustomRender(<Header goBack title="Testing" />);
   const { getByTestId } = screen;
@@ -38,6 +41,9 @@ it('renders correctly header with go back button & title', () => {
   ).toEqual(2);
 });
 
+/**
+ * Testing basic Rendering by component
+ */
 it('renders correctly header with no go back button but title', () => {
   CustomRender(<Header title="Testing" />);
   const { getByTestId } = screen;
@@ -52,6 +58,9 @@ it('renders correctly header with no go back button but title', () => {
   ).toEqual(1);
 });
 
+/**
+ * Testing Theming with styled-component
+ */
 it('renders correctly header with title matching theme', () => {
   CustomRender(<Header title="Testing" />);
   const { getByText } = screen;
