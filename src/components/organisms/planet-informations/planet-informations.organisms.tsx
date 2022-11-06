@@ -1,6 +1,10 @@
 import { View } from 'react-native';
 import Information from '../../molecules/information/information.atoms';
 
+/**
+ * Planet Information
+ * Purpose : Display many information about a planet
+ */
 export default ({ planet }: PlanetInformationProps) => (
   <View>
     <Information label="Lunes" value={(planet.moons ?? []).length.toString()} />

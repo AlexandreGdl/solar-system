@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+/**
+ * Title
+ * Purpose : Use Title in header
+ */
 export default ({ children, style }: TitleProps) => {
   return <Title style={style}>{children}</Title>;
 };

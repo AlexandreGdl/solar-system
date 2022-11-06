@@ -1,5 +1,10 @@
 import styled from 'styled-components/native';
 
+/**
+ * Empy List
+ * Purpose : Display text when a list is empty
+ * Improvement : Delete this compoennt, not that much usefull
+ */
 export default ({ text }: EmptyListProps) => {
   return (
     <Container>
