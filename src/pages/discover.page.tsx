@@ -34,7 +34,7 @@ export default ({ navigation }: Props) => {
           about the planet that populate our solar system.
         </Description>
         <Button onPress={handleNavigation} activeOpacity={0.7}>
-          <ButtonText>Discover</ButtonText>
+          <ButtonText>Discover More</ButtonText>
         </Button>
       </Template>
     </Background>
@@ -51,8 +51,8 @@ const Background = styled.ImageBackground`
 const Description = styled.Text`
   color: ${(props) => props.theme.colors.text.secondary};
   margin-top: 40px;
-  font-size: 20pt;
-  line-height: 28pt;
+  font-size: 20px;
+  line-height: 25px;
 `;
 
 const Button = styled.TouchableOpacity`
@@ -62,11 +62,10 @@ const Button = styled.TouchableOpacity`
   align-items: center;
   padding: 15px 25px;
   border-radius: ${(props) => props.theme.radius};
-  align-self: start;
+  width: 44%;
 `;
 
 const ButtonText = styled.Text`
   color: ${(props) => props.theme.colors.text.contrast};
   font-weight: bold;
-  font-size: 18pt;
 `;
