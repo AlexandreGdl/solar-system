@@ -33,7 +33,7 @@ I used atomic design to structure my components, separating theme into 3 categor
 
 ` Atom | Molecules | Organisms `
 
-Doing so it feel easier to integrate, the code is more maintainable & it also help with testing.
+Doing so it feels easier to integrate, the code is more maintainable & it also helps with testing.
 
 cf: https://bradfrost.com/blog/post/atomic-web-design/
 
@@ -42,12 +42,12 @@ Jest
 ```
 In order to test this application I will use Jest and run GitHub Action at every PR done on the project (Simulating I am working with other people)
 
-I added Jest at the end because I had no Idea what to really test since I am not a big fan of the snapshot test. But I did find out what to test and how to do that. Also I tested one component as Exemple, not every component but test are setup and just wanting for other file to test.
+I added Jest at the end because I had no Idea what to really test since I am not a big fan of the snapshot test. But I did find out what to test and how to do that. Also I tested one component as Exemple, not every component but test are setup and just waiting for other file to test.
 ```
 
 ESLint
 ```
-This project use ESLint to provide homogenous code through the whole project, not-depending on who write the code. Same as Jest, every PR is checked running ESLint command line
+This project use ESLint to provide homogeneous code throughout the whole project, not-depending on who writes the code. Same as Jest, every PR is checked running ESLint command line
 ```
 
 ## Context
