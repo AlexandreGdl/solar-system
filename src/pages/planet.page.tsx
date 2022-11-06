@@ -13,7 +13,7 @@ type Props = {
   route: RouteProp<RootStackParamList, 'Planet'>;
 };
 
-export default ({ navigation, route }: Props) => {
+export default ({ route }: Props) => {
   const [planet, setPlanet] = useState<undefined | Planet>(undefined);
   const { planetes, pending } = useSelector(
     (state: RootState) => state.planetes
@@ -60,11 +60,7 @@ export default ({ navigation, route }: Props) => {
   return (
     <Container>
       <Template>
-        <Header
-          goBack
-          navigation={navigation}
-          title={planet ? planet.name : 'Planet not found :('}
-        />
+        <Header goBack title={planet ? planet.name : 'Planet not found :('} />
         {planet ? <PlanetInformation planet={planet} /> : <View />}
       </Template>
     </Container>

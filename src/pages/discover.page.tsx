@@ -28,7 +28,7 @@ export default ({ navigation }: Props) => {
     >
       <StatusBar style="light" />
       <Template>
-        <Header navigation={navigation} title="Solar System" />
+        <Header title="Solar System" />
         <Description>
           Solar System is a Mobile App built with React-Native. It Display data
           about the planet that populate our solar system.

@@ -49,7 +49,7 @@ export default ({ navigation }: Props) => {
   return (
     <Container>
       <Template>
-        <Header navigation={navigation} title="Solar System" />
+        <Header title="Solar System" />
         <CustomInput
           onChangeText={setSearch}
           placeholderTextColor={theme.colors.text.primary}

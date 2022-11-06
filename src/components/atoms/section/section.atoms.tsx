@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+/**
+ * Section
+ * Purpose : Small information about planet that handle press
+ */
 export default ({ planet, onPress }: SectionProps) => {
   /**
    * Handle when section item is pressed
